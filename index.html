@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACS Community</title>
+  <style>
+    /* === CSS === */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      min-height: 100vh;
+    }
+
+    /* Intro */
+    #intro {
+      position: fixed;
+      top:0; left:0; width:100%; height:100%;
+      background:black;
+      display:flex; flex-direction:column;
+      justify-content:center; align-items:center;
+      z-index: 9999; /* supaya selalu di atas */
+    }
+    #intro h1 { margin-bottom:20px; }
+    .progress-bar {
+      width: 80%; height: 20px; background: #333;
+      border-radius: 10px; overflow: hidden;
+    }
+    .progress {
+      width: 0%; height: 100%; background: limegreen;
+      transition: width 0.2s;
+    }
+
+    /* Gradient text (dipakai ke h1) */
+    h1 {
+      background: linear-gradient(90deg, cyan, magenta);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Video Full screen*/
+    .bg-video {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        object-fit: cover;
+        z-index: -1;
+    }
+
+    /* Content */
+    header { margin: 20px 0; }
+    .judul {
+      font-size: 2.5rem;
+      text-shadow: 2px 2px 5px black;
+    }
+
+    section {
+      margin: 30px auto;
+      padding: 20px;
+      max-width: 400px;
+      background: rgba(0,0,0,0.6);
+      border-radius: 12px;
+      box-shadow: 0 0 10px black;
+    }
+
+    /* Buttons */
+    .btn {
+      display: block;
+      margin: 10px auto;
+      padding: 10px;
+      background: dodgerblue;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+    .btn:hover { background: deepskyblue; }
+
+    /* Rules */
+    .rules table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .rules td {
+      border: 1px solid white;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Konten utama -->
+  <div id="content" style="display:none;">
+    <header>
+      <h1 class="judul">ACS Community</h1>
+    </header>
+
+    <section class="links">
+      <h2>📌 Join to</h2>
+      <a href="https://chat.whatsapp.com/CyQAp0u3nUO348HAanpCfe?mode=ems_copy_c" target="_blank" class="btn">Komunitas</a>
+      <a href="https://chat.whatsapp.com/J8mj2QLbyEf0eL23CsmHfj?mode=ems_copy_c" target="_blank" class="btn">Group</a>
+    </section>
+
+    <section class="links">
+      <h2>🌐 Sosial Media</h2>
+      <a href="https://whatsapp.com/channel/0029Vb5nKgAFnSz9bqOOEN39" target="_blank" class="btn">Saluran</a>
+      <a href="https://www.tiktok.com/@acs_community?_t=ZS-8zC6qQwWdCT&_r=1" target="_blank" class="btn">TikTok</a>
+    </section>
+
+    <section class="rules">
+      <h2>📜 Rules</h2>
+      <table>
+        <tr><td>🚫</td><td>No Toxic</td></tr>
+        <tr><td>🤝</td><td>Respect Member</td></tr>
+        <tr><td>🔥</td><td>Active in Group</td></tr>
+      </table>
+    </section>
+
+    <section class="about">
+      <h2>Anime Creator Society</h2>
+      <p>Komunitas WhatsApp para kreator</p>
+    </section>
+
+    <!-- Video Backround -->
+    <video autoplay muted loop class="bg-video">
+      <source src="video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Intro loading -->
+  <div id="intro">
+    <h1>Welcome</h1>
+    <div class="progress-bar"><div class="progress"></div></div>
+  </div>
+
+  <script>
+    // === JavaScript ===
+    window.addEventListener("load", () => {
+      let progress = document.querySelector(".progress");
+      let intro = document.getElementById("intro");
+      let content = document.getElementById("content");
+
+      let persen = 0;
+      let loading = setInterval(() => {
+        persen += 5;
+        progress.style.width = persen + "%";
+
+        if (persen >= 100) {
+          clearInterval(loading);
+          intro.style.display = "none";
+          content.style.display = "block";
+        }
+      }, 150);
+    });
+  </script>
+
+</body>
+</html>
